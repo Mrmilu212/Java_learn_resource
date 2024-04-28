@@ -1,0 +1,2 @@
+# Java_learn_resource
+本仓库用于保存本人Java学习过程中做笔记时用到的资源
