@@ -1,0 +1,10 @@
+package Demo.MyThread;
+
+public class MyThread extends Thread{
+    @Override
+    public void run() {
+        for (int i = 0 ; i < 100 ; i++) {
+            System.out.println(this.getName() + "君子之交淡如水");
+        }
+    }
+}
