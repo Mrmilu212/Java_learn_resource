@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for测试</title>
+    <script src="js/js/vue.js"></script>
+</head>
+
+<body>
+    <div>
+        <!-- 利用v-for渲染数组元素 -->
+        <div id="app">
+            <!-- 普通for -->
+            <div v-for="(addr,index) in addrs">第{{index + 1}}个城市为{{addr}}</div>
+            
+            <hr>
+            <!-- 增强for -->
+            <div v-for="addr in addrs">{{addr}}</div>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                addrs: ['北京', '上海', '天津', '武汉', '广州', '长沙']
+            }
+        },
+    })
+</script>
+
+</html>

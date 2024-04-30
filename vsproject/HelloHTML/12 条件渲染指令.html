@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染指令</title>
+    <!-- 导入vue.js -->
+    <script src="js/js/vue.js"></script>
+</head>
+<body>
+    <!-- 定义需要绑定的区域 -->
+    <div id="app">
+        <span v-if="age <= 35">年轻人</span>
+        <span v-else-if="age >35 && age <= 60">中年人</span>
+        <span v-else>老年人</span>
+
+        <span v-show="age > 20 ">这个人年龄 {{age}} </span>
+         
+    </div>    
+</body>
+<script>
+    // 定义vue对象
+    new Vue({
+        el:"#app",
+        data() {
+            return {
+                age : 60
+            }
+        },
+    })
+</script>
+</html>

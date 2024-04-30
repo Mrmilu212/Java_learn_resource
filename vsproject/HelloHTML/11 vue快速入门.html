@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on测试</title>
+    <!-- 导入vue.js -->
+    <script src="js/js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 完整写法 -->
+        <input type="button" value="按钮1" v-on:click="handle()">
+        <!-- 简化写法 -->
+        <input type="button" value="按钮1" @click="handle()">
+    </div>
+</body>
+<!-- 绑定vue接管区域 -->
+<script>
+    new Vue({
+        el: "#app",
+        /*绑定阶段区域*/
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+            handle: function () {
+                alert("我被点击了");
+            }
+        },
+    })
+</script>
+
+</html>

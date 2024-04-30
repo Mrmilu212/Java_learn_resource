@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML综合小案例</title>
+    <!-- 引入vue.js -->
+    <script src="js/js/vue.js"></script>
+    <!-- 引入css样式 -->
+    <style>
+        table,th,td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+        <!--创建管理分区-->
+        <div id="app">
+            <table style="width: 800px;">
+                <tr>
+                    <th>编号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>成绩</th>
+                    <th>等级</th>
+                </tr>
+
+                <tr v-for="(user,index) in users">
+                    <td>{{index + 1}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.age}}</td>
+                    <td >
+                        <!-- 为了更好区分层次，提高阅读性，不建议使用多个td标签进行if判断 -->
+                        <span v-if="user.gender == 1">男</span>
+                        <span v-if="user.gender == 2">女</span>
+                    </td>
+                    <td>{{user.score}}</td>
+                    <td>
+                        <span v-if="user.score >= 85">优秀</span>
+                        <span v-else-if="user.score >= 60">及格</span>
+                        <span v-else style="color: red;">不及格</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+</body>
+        <!-- 创建vue对象 -->
+        <script>
+            new Vue({
+                el:"#app",
+                data() {
+                    return {
+                        users: [{
+                            name: "Tom",
+                            age: 20,
+                            gender: 1,
+                            score:78
+                        },{
+                            name: "Rose",
+                            age: 18,
+                            gender: 2,
+                            score:86
+                        },{
+                            name: "Jerry",
+                            age: 26,
+                            gender: 1,
+                            score:90
+                        },{
+                            name: "Tony",
+                            age: 30,
+                            gender: 1,
+                            score:52
+                        }]
+                    }
+                },
+            })
+        </script>
+</html>

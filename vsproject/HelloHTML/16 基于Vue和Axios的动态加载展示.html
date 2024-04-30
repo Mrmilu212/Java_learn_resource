@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios小案例</title>
+    <!-- 导入axios.js文件 -->
+    <script src="js/js/axios-0.18.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 在这里可以编写渲染数据的代码，用v-for可以将emps里的数据遍历出来 -->
+    </div>
+</body>
+<script>
+    // 创建Vue对象
+    new Vue({
+        el:"#app",
+        data() {
+            return {
+                // 定义数组用于接收数据
+                emps:[]
+            }
+        },
+        mounted() {
+            // 在页面挂载完成后，调用mounted函数，发送异步请求加载数据
+            axios.get("http://yapi.smart-xwork.cn/mock/169327/emp/list").then(result =>{
+                // 用前面定义好的数组接收数据
+                // 第一个data表示接收到的全部数据，第二个打他表示接收到的数据里的变量data记录的值
+                this.emps = result.data.data;
+            })
+        },
+    })
+</script>
+</html>

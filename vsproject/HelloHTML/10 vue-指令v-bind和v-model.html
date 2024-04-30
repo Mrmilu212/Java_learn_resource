@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue快速入门</title>
+    <!-- 引入vue.js文件 -->
+    <script src="js/js/vue.js"></script>
+    <!-- css样式设计 -->
+    <style>
+        a {
+            text-decoration: none;
+            /*取消下划线*/
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-bind -->
+        <!-- 完整格式 -->
+        <a v-bind:href="url">百度1</a>
+        <!-- 简化格式 -->
+        <a :href="url">百度2</a>
+
+        <!-- v-model -->
+        <input type="text" v-model="url">
+        <!-- {{url}} -->
+    </div>
+</body>
+<!-- 创建模型 -->
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                url: "https://www.baidu.com"
+            }
+        },
+    })
+</script>
+
+</html>
