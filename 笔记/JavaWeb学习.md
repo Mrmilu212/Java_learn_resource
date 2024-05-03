@@ -788,4 +788,395 @@ Maven是apache旗下的一个开源项目，是一款用于管理和构建Java�
 ![image-20240428224445328](image\image-20240428224445328.png)
 
 ## 二、Web后端开发
+### Spring
 
+- **官网**：https://spring.io
+- Spring发展到今天已经形成了一种开发生态圈，Spring提供了若干个子项目，每个项目用于完成指定的功能。
+
+### SpringBootWeb快速入门
+
+**步骤**：
+
+1. 创建springboot工程，并勾选web开发相关依赖
+2. 定义HelloController类，添加hello方法，并添加注解。
+3. 运行测试
+
+### HTTP协议
+
+**协议**：约定好的数据的格式（或约定好的数据传输的规则）
+
+#### HTTP-概述
+
+- **概念**：Hyper Text Transfer Protocol，超文本传输协议，规定了浏览器和服务器之间数据传输的规则。
+  ![image-20240429214203517](E:\TyporaNote\image\image-20240429214203517.png)
+- **特点**：
+  1. 基于TCP协议：面向连接，安全
+  2. 基于请求-响应模型的：一次请求对应一次响应
+  3. HTTP协议是无状态的协议：对于事务处理没有记忆能力，每次请求-响应都是独立的。
+     - 缺点：多次请求之间不能共享数据
+     - 优点：速度快
+
+#### HTTP-请求协议
+
+```tex
+POST /javaweb_project/springboot-web-quickstart/static/01.GET-POST.html?name=Tom&password=123 HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+Cache-Control: max-age=0
+Connection: keep-alive
+Content-Length: 21
+Content-Type: application/x-www-form-urlencoded
+Cookie: Idea-4244686b=768a9530-d880-40a7-b3d5-0898c4cae54a
+Host: localhost:63342
+Origin: http://localhost:63342
+Referer: http://localhost:63342/javaweb_project/springboot-web-quickstart/static/01.GET-POST.html?name=Tom&password=123
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="122", "Google Chrome";v="122"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+```
+
+**请求行**：请求数据的第一行（请求方式、资源路径、协议及其版本）
+
+**请求头**：第二行开始，格式key:value
+
+- 常见的请求头
+
+|      名称       | 作用                                                         |
+| :-------------: | :----------------------------------------------------------- |
+|      Host       | 请求的主机名                                                 |
+|   User-Agent    | 浏览器版本，例如Chrome浏览器的标识类似Mozilla/5.0 ... Chrome/79，IE浏览器的标识类似Mozilla/5.0(Windows NT ...)like Gecko |
+|     Accept      | 表示浏览器能接收的资源类型，如`text/*`文本, `image/*`图片 或者 `*/*`表示所有 |
+| Accept-Language | 表示浏览器的偏好语言，服务器可以据此返回不同语言的网页       |
+| Accept-Encoding | 表示浏览器可以支持的压缩类型，例如gzip，deflate等            |
+|  Content-Type   | 请求主体的数据类型                                           |
+| Content-Length  | 请求主体的大小（单位：字节）                                 |
+
+**请求体**：POST请求，存放请求参数
+
+- 请求方式-GET：请求参数在请求行中，没有请求体，如：/brand/findAll?name=OPPO&status=1。GET请求大小是有限制的。
+- 请求方式-POST：请求参数在请求体中，POST请求大小是没有限制的。
+
+#### HTTP-响应协议
+
+```
+HTTP/1.1 200 OK
+content-type: text/html
+date: Mon, 29 Apr 2024 14:19:46 GMT
+x-frame-options: SameOrigin
+X-Content-Type-Options: nosniff
+x-xss-protection: 1; mode=block
+accept-ranges: bytes
+cache-control: private, must-revalidate
+last-modified: Mon, 29 Apr 2024 14:19:30 GMT
+content-length: 569
+access-control-allow-origin: http://localhost:63342
+vary: origin
+access-control-allow-credentials: true
+```
+
+**响应行**：响应数据第一行（协议、状态码、描述）
+
+**响应头**：第二行开始，格式key:value
+
+**响应体**：最后一部分，存放响应数据
+
+响应状态码的分类：
+
+| 类型 | 含义                                                         |
+| :--: | ------------------------------------------------------------ |
+| 1xx  | 响应中-临时状态码，表示请求已经接收，告诉客户端应该继续请求或者如果它已经完成则忽略它 |
+| 2xx  | 成功-表示请求已经被成功接收，处理已完成                      |
+| 3xx  | 重定向-重定向到其他地方；让客户端再发起一次请求以完成这个处理 |
+| 4xx  | 客户端错误-处理发生错误，责任在客户端。如：请求不了不存在的资源、客户端未被授权、进制访问等 |
+| 5xx  | 服务器错误-处理发生错误，责任在服务端。如：程序抛出异常      |
+
+[**常见的响应状态码**](E:\TyporaNote\响应状态码.md)
+
+常见的响应头：
+
+|       名称       | 含义                                                       |
+| :--------------: | ---------------------------------------------------------- |
+|   Content-Type   | 表示该响应内容的类型，例如text/html，application/json      |
+|  Content-Length  | 表示该响应内容的长度（字节数）                             |
+| Content-Encoding | 表示该相应压缩宣发，例如gzip                               |
+|  Cache-Control   | 指示客户端应如何缓存，例如max-age=300表示可以最多缓存300秒 |
+|    Set-Cookie    | 告诉浏览器为当前页面所在的域设置cookie                     |
+
+#### HTTP-协议解析
+
+根据协议规定编写服务器程序
+
+### Web服务器-Tomcat
+
+**Web服务器**：
+
+- 对HTTP协议操作进行封装，简化web程序开发
+- 部署web项目，对外提供网上信息浏览服务
+
+**Tomcat**：
+
+- 一个轻量级的web服务器，支持servlet，jsp等少量Java EE规范
+- 也被称为web容器，servlet容器
+
+#### 安装使用
+
+- 下载：官网下载，地址： [Apache Tomcat® - Apache Tomcat 9 Software Downloads](https://tomcat.apache.org/download-90.cgi)
+
+- 安装：绿色版，直接解压即可
+
+- 卸载：直接删除目录即可
+
+- 启动：双击：bin\startup,bat
+
+  - 控制台中文乱码：修改conf/logging.properties，将控制台编码改为GBK
+
+    ```properties
+    java.util.logging.ConsoleHandler.level = FINE
+    java.util.logging.ConsoleHandler.formatter = org.apache.juli.OneLineFormatter
+    java.util.logging.ConsoleHandler.encoding = GBK
+    ```
+
+    
+
+- 关闭：
+
+  - 直接关闭运行窗口：强制关闭
+  - bin\shutdown.bat：正常关闭
+  - Ctrl+C：正常关闭
+
+**起步依赖**：
+
+- spring-boot-starter-web：包含了web应用开发所需要的常见依赖
+- spring-boot-starter-test：包含了单元测试所需要的常见依赖
+- 官方提供的starter：https://docs.spring.io/spring-boot/docs/3.2.5/reference/htmlsingle/#using.bulid-systems.starters
+
+**内嵌tomcat服务器**：
+
+- 基于springboot开发的web应用程序，内置了tomcat服务器，当启动类运行时，会自动启动内嵌的tomcat服务器
+
+### 请求响应
+
+![image-20240503165455300](E:\TyporaNote\image\image-20240503165455300.png)
+
+- 请求（HttpServletRequest）：获取请求数据
+- 响应（HttpServletResponse）：设置响应数据
+- BS架构：Browser/Server，浏览器/服务器架构。客户端只需要浏览器，应用程序的逻辑和数据都存储在服务端。（维护方便，但体验一般）
+- CS架构：Client/Sever。客户端/服务端架构模式。（开发、维护麻烦，但体验不错）
+
+### 请求
+
+#### Postman
+
+- postman时一款功能强大的网页调试与发送网页HTTP请求的Chrome插件
+- 作用：常用于进行接口测试
+
+#### 常见参数
+
+1. 原始方式获取请求参数
+
+   - Controller方法形参中声明HttpServletRequest对象
+
+   - 调用对象的getParameter（参数名），获取的值为String类型
+
+     ```java
+     //原始方式
+     @RequestMapping("/simpleParam")
+     public String simpleParam(HttpServletRequest request){
+         //获取请求参数
+         String name = request.getParameter("name");
+         String ageStr = request.getParameter("age");
+         int age = Integer.parseInt(ageStr);
+     
+         System.out.println(name +":"+ age);
+         return "OK";
+     }
+     ```
+
+2. SpringBoot中接收简单参数
+
+   - 请求参数与方法形参变量相同就可以接收
+   - 会进行自动转换
+
+   ```java
+   //springboot方式
+   @RequestMapping("/simpleParam")
+   public String simpleParam(String name,Integer age){
+       System.out.println(name +":"+ age);
+       return "OK";
+   }
+   ```
+
+3. @RequestParam注解
+
+   - 方法形参名称和请求参数的名称不匹配，通过该注解完成映射
+   - 该注解的required属性默认值为true，代表该注解参数必须传递
+
+   ```java
+   //springboot方式
+   @RequestMapping("/simpleParam")
+   public String simpleParam(@RequestParam(name = "name") String username, Integer age){
+       System.out.println(username +":"+ age);
+       return "OK";
+   }
+   ```
+
+#### 实体参数
+
+- 简单实体对象：请求参数名和形参对象属性名相同，定义POJO（简单的Java对象）接收即可
+
+```Java
+public class User {
+    private String name;
+    private int age;
+    }
+```
+
+| KEY  | VALUE |
+| :--: | :---: |
+| name |  TOM  |
+| age  |  20   |
+
+```Java
+//简单实体参数
+@RequestMapping("/simplePojo")
+public String simplePojo(User user){
+    System.out.println(user);
+    return "OK";
+}
+```
+
+- 复杂实体对象：请求参数与形参对象属性名相同，按照对象的层级结构关系即可接收嵌套POJO属性参数
+
+```Java
+public class User {
+    private String name;
+    private int age;
+    private Address address;
+    }
+    
+public class Address {
+    private String province;
+    private String city;
+}
+    
+```
+
+|       KEY        | VALUE |
+| :--------------: | :---: |
+|       name       |  TOM  |
+|       age        |  20   |
+| address.province | 北京  |
+|   address.city   | 北京  |
+
+```Java
+//复杂实体参数
+@RequestMapping("/complexPojo")
+public String complexPojo(User user){
+    System.out.println(user);
+    return "OK";
+}
+```
+
+#### 数组集合参数
+
+|  KEY  |     VALUE      |
+| :---: | :------------: |
+| hobby | Genshin Impact |
+| hobby |      Java      |
+| hobby |    bicycle     |
+
+- 数组参数：请求参数名与形参数组名称相同且请求参数为多个，定义数组类型的形参即可接收参数
+
+```Java
+//数组参数
+@RequestMapping("/arrayParam")
+public String arrayParam(String[] hobby){
+    System.out.println(Arrays.toString(hobby));
+    return "OK";
+}
+```
+
+- 集合参数：请求参数名与形参集合名称相同且请求参数为多个，@RequestParam绑定参数关系
+
+```Java
+//集合参数
+@RequestMapping("/listParam")
+public String listParam(@RequestParam List<String> hobby){
+    System.out.println(hobby);
+    return "OK";
+}
+```
+
+#### 日期时间参数
+
+|    KEY     |        VALUE        |
+| :--------: | :-----------------: |
+| updateTime | 2024-05-03 23:55:20 |
+
+- 使用@DateTimeFormat()注解完成时间日期格式转换
+
+```Java
+//时间日期参数
+@RequestMapping("/dateParam")
+public String dateParam(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")LocalDateTime updateTime){
+    System.out.println(updateTime);
+    return "OK";
+}
+```
+
+#### JSON参数
+
+```json
+{
+	"name": "TOM",
+	"age": 20,
+	"address": {
+		"province": "北京",
+		"city": "北京"
+	}
+}
+```
+
+- JSON参数：JSON数据键名与形参对象属性名相同，定义POJO类型形参即可接收参数，需要使用@RequestBody标识绑定数据
+
+```java
+//JSON参数
+@RequestMapping("/jsonParam")
+public String jsonParam(@RequestBody User user){
+    System.out.println(user);
+    return "OK";
+}
+```
+
+#### 路径参数
+
+```http
+http://localhost:8080/path/10/TOM
+```
+
+
+
+- 路径参数：通过请求URL直接传递参数，使用{...}来标识路径参数，需要使用获取路径参数
+
+```Java
+//路径参数(单个)
+@RequestMapping("/path/{id}")
+public String pathParam(@PathVariable Integer id){
+    System.out.println(id);
+    return "OK";
+}
+
+//路径参数(多个)
+@RequestMapping("/path/{id}/{name}")
+public String pathParam(@PathVariable Integer id,@PathVariable String name){
+    System.out.println(id + "/" + name);
+    return "OK";
+}
+```
