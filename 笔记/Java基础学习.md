@@ -12,7 +12,7 @@
 2. 任意节点的左子树上的值都小于当前节点
 3. 任意右子树上的值都大于当前节点
 
-![image-20240217154203250](image\image-20240217154203250.png)
+![image-20240217154203250](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217154203250.png)
 
 #### 添加节点（规则）
 
@@ -24,37 +24,37 @@
 
    从根节点开始，然后按照当前节点，左子节点，右子节点的顺序遍历
 
-   ![image-20240217155114693](image\image-20240217155114693.png)
+   ![image-20240217155114693](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217155114693.png)
 
 2. ##### 中序遍历
 
    从最左边节点开始，然后按照左子节点，当前节点，右子节点的顺序遍历
 
-   ![image-20240217155445165](image\image-20240217155445165.png)
+   ![image-20240217155445165](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217155445165.png)
 
 3. ##### 后序遍历
 
    从最左边的子节点开始，然后按照左子节点，右子节点，当前节点的顺组遍历
 
-   ![image-20240217155837781](image\image-20240217155837781.png)
+   ![image-20240217155837781](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217155837781.png)
 
 4. ##### 层序遍历
 
    从根节点开始一层一层的遍历
 
-   ![image-20240217155951075](image\image-20240217155951075.png)
+   ![image-20240217155951075](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217155951075.png)
 
 #### 8个专业名词
 
-![image-20240217160227329](image\image-20240217160227329.png)
+![image-20240217160227329](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217160227329.png)
 
 ### 平衡二叉树
 
 规则：任意节点左右子树的高度差不超过1
 
-![image-20240217161011812](image\image-20240217161011812.png)
+![image-20240217161011812](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217161011812.png)
 
-![image-20240217161050705](image\image-20240217161050705.png)
+![image-20240217161050705](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217161050705.png)
 
 #### 平衡二叉树的旋转机制
 
@@ -70,9 +70,9 @@
 
    晋升原来的右子节点。
 
-   ![image-20240217235638310](image\image-20240217235638310.png)
+   ![image-20240217235638310](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217235638310.png)
 
-   ![image-20240217235723804](image\image-20240217235723804.png)
+   ![image-20240217235723804](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217235723804.png)
 
    ###### 复杂情况：
 
@@ -82,9 +82,9 @@
 
    原先的右子节点变为新的父节点，并把多余的左子节点出让，给已降级的根节点当右子节点。
 
-   ![image-20240217234814974](image\image-20240217234814974.png)
+   ![image-20240217234814974](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217234814974.png)
 
-   ![image-20240217234846071](image\image-20240217234846071.png)
+   ![image-20240217234846071](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240217234846071.png)
 
 2. 右旋
    情况与左旋类似，在左旋的情况下，左变右，右变左，即为右旋的情况
@@ -122,7 +122,7 @@
 
 添加节点时，默认颜色是**红色的**（效率高）
 
-![image-20240218172204506](image\image-20240218172204506.png)
+![image-20240218172204506](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240218172204506.png)
 
 ## Set系列集合
 
@@ -292,7 +292,7 @@ LinkedHashMap
 
 ## 异常
 
-![image-20240302105835486](image\image-20240302105835486.png)
+![image-20240302105835486](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240302105835486.png)
 
 Exception:叫做异常，代表程序可能出现的问题
 				   我们通常会用Exception以及它的子类来封装程序出现的问题
@@ -498,7 +498,7 @@ public static void join()                   插入线程\插队线程
 
 ### 线程的生命周期
 
-![image-20240324213932551](image\image-20240324213932551.png)
+![image-20240324213932551](C:\Users\86132\AppData\Roaming\Typora\typora-user-images\image-20240324213932551.png)
 
 ### 同步代码块
 
@@ -550,7 +550,7 @@ PS：实际定义中线程并没有运行状态，因为jvm不负责线程的执
 
 #### 自定义线程池
 
-![image-20240406143912608](image\image-20240406143912608.png)
+![image-20240406143912608](E:\TyporaNote\image\image-20240406143912608.png)
 
 #### 线程池的工作原理
 
@@ -564,7 +564,7 @@ PS：实际定义中线程并没有运行状态，因为jvm不负责线程的执
 
 #### 线程池的大小
 
-![image-20240406145227516](image\image-20240406145227516.png)
+![image-20240406145227516](E:\TyporaNote\image\image-20240406145227516.png)
 
 Thread dump是一个工具，可以用来获取CPU计算时间和等待时间
 
@@ -647,9 +647,9 @@ Thread dump是一个工具，可以用来获取CPU计算时间和等待时间
 
 
 1. 三次握手
-   ![image-20240409232517915](image\image-20240409232517915.png)
+   ![image-20240409232517915](E:\TyporaNote\image\image-20240409232517915.png)
 2. 四次挥手
-   ![image-20240409232638499](image\image-20240409232638499.png)
+   ![image-20240409232638499](E:\TyporaNote\image\image-20240409232638499.png)
 
 ## 反射
 
@@ -658,7 +658,7 @@ Thread dump是一个工具，可以用来获取CPU计算时间和等待时间
 
 ### 利用反射获取构造方法
 
-![image-20240410221821303](image\image-20240410221821303.png)
+![image-20240410221821303](E:\TyporaNote\image\image-20240410221821303.png)
 
 ```java
 public int modifiers()							//获取权限修饰符，以整数形式返回
@@ -670,11 +670,11 @@ setAccessible()									//临时取消构造方法的访问权限
 
 应用：可以用获取到的Filed对象进行get或set操作，来查看或改变变量记录的值
 
-![image-20240410222936631](image\image-20240410222936631.png)
+![image-20240410222936631](E:\TyporaNote\image\image-20240410222936631.png)
 
 ### 利用反射获取成员方法
 
-![image-20240410223934544](image\image-20240410223934544.png)
+![image-20240410223934544](E:\TyporaNote\image\image-20240410223934544.png)
 
 ### 总结
 
@@ -702,7 +702,7 @@ setAccessible()									//临时取消构造方法的访问权限
 
 1. 为什么需要代理？
    代理可以无侵入的给对象增强其他功能
-   ![image-20240411223305939](image\image-20240411223305939.png)
+   ![image-20240411223305939](E:\TyporaNote\image\image-20240411223305939.png)
 2. 代理长什么样？
    代理里面就是对象要被代理的方法
 3. Java通过什么来保证代理的方法一致？
@@ -710,4 +710,4 @@ setAccessible()									//临时取消构造方法的访问权限
 
 ## 完整的Java学习路线
 
-![image-20240411231425664](image\image-20240411231425664.png)
+![image-20240411231425664](E:\TyporaNote\image\image-20240411231425664.png)
