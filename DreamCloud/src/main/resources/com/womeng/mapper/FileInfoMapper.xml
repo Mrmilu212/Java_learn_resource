@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.womeng.mapper.FileInfoMapper">
+
+    <!--获取用户根目录-->
+    <select id="getRootPathId" resultType="java.lang.Long">
+        select id
+        from file_info
+        where user_id = '00000000001'
+          and file_name = #{username}
+          and parent_id = #{parentId}
+    </select>
+
+    <!--获取当前目录下的所有文件-->
+    <select id="selectByParentId" resultType="com.womeng.entity.FileInfo" parameterType="java.lang.Long">
+        WITH RECURSIVE file_hierarchy AS (
+            SELECT *
+            FROM file_info
+            WHERE parent_id = #{id}
+            UNION ALL
+            SELECT fi.*
+            FROM file_info fi
+                     INNER JOIN file_hierarchy fh ON fi.parent_id = fh.id
+            WHERE fh.is_dir = 1
+        )
+        SELECT *
+        FROM file_hierarchy;
+    </select>
+
+    <!--获取该目录里下一级的文件列表-->
+    <select id="selectNextList" resultType="com.womeng.entity.FileInfo" parameterType="java.lang.Long">
+        select *
+        from file_info
+        where parent_id = #{ParentId}
+          and trash_bin = 0
+    </select>
+
+    <!--获取各级父目录：文件完整路径-->
+    <select id="getFilePath" resultType="com.womeng.entity.FileInfo" parameterType="java.lang.Long">
+        WITH RECURSIVE parent_hierarchy AS (
+            SELECT *
+            FROM file_info
+            WHERE id = #{id}
+            UNION ALL
+            SELECT fi.*
+            FROM file_info fi
+                     INNER JOIN parent_hierarchy ph ON ph.parent_id = fi.id
+        )
+        SELECT *
+        FROM parent_hierarchy
+        where id != #{id};
+    </select>
+</mapper>

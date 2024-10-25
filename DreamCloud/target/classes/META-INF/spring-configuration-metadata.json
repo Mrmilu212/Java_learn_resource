@@ -1,0 +1,42 @@
+{
+  "groups": [
+    {
+      "name": "aliyun.oss",
+      "type": "com.womeng.properties.AliOSSProperties",
+      "sourceType": "com.womeng.properties.AliOSSProperties"
+    },
+    {
+      "name": "zip.path",
+      "type": "com.womeng.properties.ZipProperties",
+      "sourceType": "com.womeng.properties.ZipProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "aliyun.oss.access-key-id",
+      "type": "java.lang.String",
+      "sourceType": "com.womeng.properties.AliOSSProperties"
+    },
+    {
+      "name": "aliyun.oss.access-key-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.womeng.properties.AliOSSProperties"
+    },
+    {
+      "name": "aliyun.oss.bucket-name",
+      "type": "java.lang.String",
+      "sourceType": "com.womeng.properties.AliOSSProperties"
+    },
+    {
+      "name": "aliyun.oss.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.womeng.properties.AliOSSProperties"
+    },
+    {
+      "name": "zip.path.output-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.womeng.properties.ZipProperties"
+    }
+  ],
+  "hints": []
+}
